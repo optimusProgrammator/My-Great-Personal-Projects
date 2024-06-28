@@ -7,7 +7,7 @@ def is_red(r, g, b):
     return 150 <= r <= 255 and 0 <= g <= 100 and 0 <= b <= 160
 
 # Load the image
-image_path = "redball.jpeg"
+image_path = "/3111390-a-young-male-child-throwing-a-large-red-ball-over-white-background.jpg"
 image = Image.open(image_path)
 image_a = image.load()
 
