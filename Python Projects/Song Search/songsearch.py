@@ -6,33 +6,35 @@ Created on Tue Jun 11 10:28:31 2024
 
 SMART MUSIC APP
 
-This is a artist search app implementing the basic csv functions of Python
-
+This is an artist search app implementing basic CSV functions in Python
 """
 
-file = open("songs.csv", encoding='utf8')
-header = file.readline().strip().split(",")
-
-input_name = input("Search for an artist name : ")
-input_name = input_name.lower().capitalize()
-songs = []
-
-for data in file:
-    song = data.strip().split(",")
-    
-    artist_name = song[-1]
-    
-    if artist_name == input_name:
-        if song not in songs:
+def read_csv(file_path):
+    songs = []
+    with open(file_path, 'r', encoding='utf8') as file:
+        header = file.readline().strip().split(",")
+        for line in file:
+            song = line.strip().split(",")
             songs.append(song)
-        
-print("{:<17} {:<18} {:<12}".format("Artist", "Song Name", "Year"))    
-print("----------------------------------------------------")    
-for song in songs:
-    artist_name = song[0]
-    song_name = song[1]
-    year = song[2]
-    
-    
-    print("{:<17} {:<18} {:<12} ".format(artist_name, song_name, year))
-    print()
+    return header, songs
+
+def search_artist(songs, artist_name):
+    artist_name = artist_name.lower().capitalize()
+    found_songs = []
+    for song in songs:
+        if song[-1].lower() == artist_name:
+            found_songs.append(song)
+    return found_songs
+
+def display_songs(songs, header):
+    print("{:<17} {:<18} {:<12}".format(header[0], header[1], header[2]))
+    print("----------------------------------------------------")
+    for song in songs:
+        print("{:<17} {:<18} {:<12}".format(song[0], song[1], song[2]))
+
+if __name__ == "__main__":
+    file_path = "songs.csv"
+    header, all_songs = read_csv(file_path)
+    input_name = input("Search for an artist name: ")
+    found_songs = search_artist(all_songs, input_name)
+    display_songs(found_songs, header)
