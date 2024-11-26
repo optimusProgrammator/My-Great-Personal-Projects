@@ -20,6 +20,7 @@ h1 {
 main {
   margin: 30px auto;
   max-width: 1200px;
+  font-family: 'Poppins', sans-serif;
 }
 
 #content-wrapper {
