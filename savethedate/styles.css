@@ -52,6 +52,7 @@ form input, form select, form button {
 
 form .date-group {
   display: flex;
+  font-family: 'Poppins', sans-serif;
   gap: 10px;
 }
 
@@ -79,6 +80,7 @@ form button:hover {
 .event-card {
   background: #ffffff;
   margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -97,6 +99,7 @@ form button:hover {
 }
 
 .delete-btn:hover {
+  font-family: 'Poppins', sans-serif;
   background: #d32f2f;
 }
 
